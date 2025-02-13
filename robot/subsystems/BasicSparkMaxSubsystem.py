@@ -16,6 +16,8 @@ class BasicSparkMaxSubsystem(Subsystem):
         # We are going to use front right motor controller
         self.turn = SparkMax(FRONT_RIGHT_TURN_ID, SparkLowLevel.MotorType.kBrushless)
 
+        self.turnEncoder = self.turn.getEncoder() # NOTE: this is a relative encoder--wheels must be zeroed BEFORE turning on!
+
         self.turningPIDController = ProfiledPIDController(
             TURN_FRONT_RIGHT_P,
             TURN_FRONT_RIGHT_I,
